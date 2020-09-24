@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+
+    <style type="text/css">
+        .tg {
+            border-collapse: collapse;
+            border-spacing: 0;
+            border-color: #ccc;
+        }
+
+        .tg td {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            padding: 10px 5px;
+            border-style: solid;
+            border-width: 1px;
+            overflow: hidden;
+            word-break: normal;
+            border-color: #ccc;
+            color: #333;
+            background-color: #fff;
+        }
+
+        .tg th {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            padding: 10px 5px;
+            border-style: solid;
+            border-width: 1px;
+            overflow: hidden;
+            word-break: normal;
+            border-color: #ccc;
+            color: #333;
+            background-color: #f0f0f0;
+        }
+
+        .tg .tg-4eph {
+            background-color: #f9f9f9
+        }
+    </style>
+</head>
+<body>
+<div th:switch="${usersList}">
+    <h2 th:case="null">No user found!</h2>
+    <div th:case="*">
+        <h2>Users</h2>
+        <table class="tg">
+            <thead>
+            <tr>
+                <th th:width="60">ID</th>
+                <th th:width="120">Name</th>
+                <th th:width="120">Password</th>
+                <th th:width="120">Action</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="user : ${usersList}">
+                <td th:text="${user.id}"></td>
+                <td> <a th:href="@{/admin/userData/{id}(id=${user.id})}"><div th:text="${user.name}"></div></a></td>
+                <td th:text="${user.password}"></td>
+                <td>
+                    <a th:href="@{/admin/user-update/{id}(id=${user.id})}"><input type="submit" value="Edit"></a>
+                    <a th:href="@{/admin/user-delete/{id}(id=${user.id})}"><input type="submit" value="Delete"></a>
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a th:href="@{/admin/user-create}"><input type="submit" value="Create User"></a></p>
+
+</div>
+
+</form>
+
+<form th:action="@{/logout}" method="POST">
+    <input type="submit" value="Logout"/>
+</form>
+</body>
+</html>
