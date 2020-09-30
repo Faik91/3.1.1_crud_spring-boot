@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html  xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Users</title>
@@ -52,8 +52,12 @@
             <thead>
             <tr>
                 <th th:width="60">ID</th>
-                <th th:width="120">Name</th>
-                <th th:width="120">Password</th>
+                <th th:width="120">First Name</th>
+                <th th:width="120">Last Name</th>
+                <th th:width="20">Age</th>
+                <th th:width="120">Email</th>
+                <th th:width="80">Role</th>
+                <th th:width="60">Password</th>
                 <th th:width="120">Action</th>
             </tr>
             </thead>
@@ -61,7 +65,11 @@
             <tbody>
             <tr th:each="user : ${usersList}">
                 <td th:text="${user.id}"></td>
-                <td> <a th:href="@{/admin/userData/{id}(id=${user.id})}"><div th:text="${user.name}"></div></a></td>
+                <td> <a th:href="@{/admin/userData/{id}(id=${user.id})}"><div th:text="${user.firstName}"></div></a></td>
+                <td th:text="${user.lastName}"></td>
+                <td th:text="${user.age}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.roles}"></td>
                 <td th:text="${user.password}"></td>
                 <td>
                     <a th:href="@{/admin/user-update/{id}(id=${user.id})}"><input type="submit" value="Edit"></a>

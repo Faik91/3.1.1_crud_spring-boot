@@ -24,8 +24,8 @@ public class UserService {
         this.roleRepository = roleRepository;
     }
 
-    public User getUserByName(String username) {
-        return userRepository.getUserByName(username);
+    public User getUserByEmail(String email) {
+        return userRepository.getUserByEmail(email);
     }
 
     public List<User> allUsers() {
@@ -33,9 +33,6 @@ public class UserService {
     }
 
     public void saveUser(User user) {
-        Set<Role> roleSet = new HashSet<>();
-        roleSet.add( roleRepository.getOne(1L));
-        user.setRoles(roleSet);
         this.userRepository.save(user);
     }
 
@@ -47,4 +44,7 @@ public class UserService {
         return this.userRepository.getOne(id);
     }
 
+    public List<Role> allRoles(){
+        return this.roleRepository.findAll();
+    }
 }

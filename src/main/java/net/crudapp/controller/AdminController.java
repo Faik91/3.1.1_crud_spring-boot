@@ -1,5 +1,6 @@
 package net.crudapp.controller;
 
+import net.crudapp.model.Role;
 import net.crudapp.model.User;
 import net.crudapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,9 @@ public class AdminController {
     }
 
     @GetMapping("/user-create")
-    public String createUserForm(User user){
+    public String createUserForm(User user, Model model){
+        List<Role> roles = this.userService.allRoles();
+        model.addAttribute("roles", roles);
         return "user-create";
     }
 
@@ -47,6 +50,8 @@ public class AdminController {
     @GetMapping("/user-update/{id}")
     public String updatePage(@PathVariable("id") long id, Model model){
         User user = this.userService.getUserById(id);
+        List<Role> roles = this.userService.allRoles();
+        model.addAttribute("roles", roles);
         model.addAttribute("user", user);
         return "user-update";
     }

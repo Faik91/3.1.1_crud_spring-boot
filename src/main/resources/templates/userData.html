@@ -46,15 +46,19 @@
 <table class="tg">
     <tr>
         <th th:width="80">ID</th>
-        <th th:width="120">Name</th>
-        <th th:width="120">Password</th>
+        <th th:width="120">First Name</th>
+        <th th:width="120">Last Name</th>
+        <th th:width="120">Age</th>
+        <th th:width="120">Email</th>
         <th th:width="120">Roles</th>
 
     </tr>
     <tr>
         <td th:text="${user.id}"></td>
-        <td th:text="${user.name}"></td>
-        <td th:text="${user.password}"></td>
+        <td th:text="${user.firstName}"></td>
+        <td th:text="${user.lastName}"></td>
+        <td th:text="${user.age}"></td>
+        <td th:text="${user.email}"></td>
         <td th:text="${user.roles}"></td>
     </tr>
 
