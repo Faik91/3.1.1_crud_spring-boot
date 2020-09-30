@@ -1,6 +1,6 @@
-package net.crudapp.config;
+package net.crudapp.security;
 
-import net.crudapp.config.handler.LoginSuccessHandler;
+import net.crudapp.security.handler.LoginSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;

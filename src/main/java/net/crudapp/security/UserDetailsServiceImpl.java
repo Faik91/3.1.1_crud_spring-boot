@@ -1,5 +1,6 @@
-package net.crudapp.service;
+package net.crudapp.security;
 
+import net.crudapp.service.UserService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
