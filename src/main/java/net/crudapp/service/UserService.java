@@ -7,6 +7,7 @@ import net.crudapp.repository.RoleRepository;
 import net.crudapp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 import java.util.List;
@@ -16,35 +17,36 @@ import java.util.Set;
 public class UserService {
 
     private final UserRepository userRepository;
-    private final RoleRepository roleRepository;
+
 
     @Autowired
-    public UserService(UserRepository userRepository, RoleRepository roleRepository) {
+    public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
     }
 
+    @Transactional
     public User getUserByEmail(String email) {
         return userRepository.getUserByEmail(email);
     }
 
+    @Transactional
     public List<User> allUsers() {
         return this.userRepository.findAll();
     }
 
+    @Transactional
     public void saveUser(User user) {
         this.userRepository.save(user);
     }
 
+    @Transactional
     public void deleteUser(long id) {
        this.userRepository.deleteById(id);
     }
 
+    @Transactional
     public User getUserById(long id) {
         return this.userRepository.getOne(id);
     }
 
-    public List<Role> allRoles(){
-        return this.roleRepository.findAll();
-    }
 }

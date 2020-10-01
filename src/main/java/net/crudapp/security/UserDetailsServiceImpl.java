@@ -1,6 +1,7 @@
 package net.crudapp.security;
 
 import net.crudapp.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -12,6 +13,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     private final UserService userService;
 
+    @Autowired
     public UserDetailsServiceImpl(UserService userService) {
         this.userService = userService;
     }
